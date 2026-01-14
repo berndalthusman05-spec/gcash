@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Account - Fintech Rewards</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/verify.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="app-logo"></div>
+            <span class="app-name">Grand Giveaway Rewards</span>
+        </header>
+
+        <main class="card text-left">
+            <div class="verify-header">
+                <h2 class="verify-title">Verify your Account</h2>
+                <span class="verify-step">50% COMPLETE</span>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;"></div>
+            </div>
+
+            <p>Please complete the following tasks to claim your digital reward.</p>
+
+            <form id="verification-form">
+                <!-- Step 1: Country -->
+                <div class="form-group">
+                    <label class="form-label">1. Confirm your country</label>
+                    <select id="country" class="form-select" required>
+                        <option value="" disabled selected>Select your country</option>
+                        <option value="US">United States (+1)</option>
+                        <option value="UK">United Kingdom (+44)</option>
+                        <option value="CA">Canada (+1)</option>
+                        <option value="AU">Australia (+61)</option>
+                        <option value="PH">Philippines (+63)</option>
+                    </select>
+                </div>
+
+                <!-- Step 2: Contact Info -->
+                <div class="form-group">
+                    <label class="form-label">2. Contact Information</label>
+                    <input type="tel" id="phone" class="form-input mb-4" placeholder="Mobile Number (e.g. 1234567890)" required>
+                    <input type="email" id="email" class="form-input" placeholder="Email Address" required>
+                </div>
+
+                <!-- Get Code Action -->
+                <button type="button" id="get-code-btn" class="btn btn-primary mb-4">
+                    Get Reward ID
+                </button>
+
+                <!-- Step 3: Enter Code (Initially Hidden or Disabled) -->
+                <div id="code-section" class="form-group" style="opacity: 0.5; pointer-events: none; transition: opacity 0.3s;">
+                    <label class="form-label">3. Enter Reward ID</label>
+                    <input type="text" id="reward-id-input" class="form-input" placeholder="e.g. RW-123456">
+                    <div id="generated-id-display" class="reward-id-display hidden"></div>
+                    <div id="error-msg" class="error-message">Invalid Reward ID. Please try again.</div>
+                </div>
+
+                <button type="submit" id="continue-btn" class="btn btn-primary" style="opacity: 0.5; pointer-events: none;">
+                    Continue Verification &rarr;
+                </button>
+            </form>
+
+            <div class="secure-badge">
+                <svg class="secure-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                SECURE 256-BIT ENCRYPTED VERIFICATION
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/supabase.js"></script>
+    <script src="js/verify.js"></script>
+</body>
+</html>
